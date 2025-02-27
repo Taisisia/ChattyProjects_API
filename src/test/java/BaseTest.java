@@ -101,6 +101,5 @@ public class BaseTest {
                 .extract().response();
         return response;
     }
-//Faker faker = new Faker();
-//faker.internet().emailAddress()
+
 }
