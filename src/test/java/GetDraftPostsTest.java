@@ -17,6 +17,7 @@ public class GetDraftPostsTest extends BaseTest {
         List<PostResponse> draftPosts = getDraftResponse.jsonPath().getList("drafts", PostResponse.class);
         assertNotNull(draftPosts);
         assertTrue(draftPosts.isEmpty());
-      //  assertFalse(draftPosts.isEmpty());
+//      //  assertFalse(draftPosts.isEmpty());
+//        создать черновик
     }
 }

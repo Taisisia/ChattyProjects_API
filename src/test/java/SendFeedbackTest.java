@@ -28,8 +28,6 @@ public class SendFeedbackTest extends BaseTest {
         SendFeedbackRequest sendFeedbackRequest = new SendFeedbackRequest("John", "", content);
         Response response = postRequest("/api/feedback", 400, sendFeedbackRequest);
 
-        Assertions.assertEquals(400, response.getStatusCode());
-
         String responseBody = response.getBody().asString();
         Assertions.assertTrue(responseBody.contains("Email can not be empty!"));
     }
@@ -38,8 +36,6 @@ public class SendFeedbackTest extends BaseTest {
         String content = "";
         SendFeedbackRequest sendFeedbackRequest = new SendFeedbackRequest("John", "testQA303@gmail.com", content);
         Response response = postRequest("/api/feedback", 400, sendFeedbackRequest);
-
-        Assertions.assertEquals(400, response.getStatusCode());
 
         String responseBody = response.getBody().asString();
         Assertions.assertTrue(responseBody.contains("Content can not be empty!"));
@@ -51,8 +47,6 @@ public class SendFeedbackTest extends BaseTest {
         String content = faker.lorem().sentence();
         SendFeedbackRequest sendFeedbackRequest = new SendFeedbackRequest("", "testQA303@gmail.com", content);
         Response response = postRequest("/api/feedback", 400, sendFeedbackRequest);
-
-        Assertions.assertEquals(400, response.getStatusCode());
 
         String responseBody = response.getBody().asString();
         Assertions.assertTrue(responseBody.contains("Name must contain from 1 to 30 characters"));

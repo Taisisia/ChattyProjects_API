@@ -14,18 +14,6 @@ public class GetUser extends BaseTest {
         UserDataResponse userInfo = responseSecond.as(UserDataResponse.class);
         System.out.println("response" + response);
         System.out.println("responseSecond" + responseSecond);
-//{
-//    "id": "7586bfba-3383-4348-830f-c4629acac7fa",
-//    "name": null,
-//    "surname": null,
-//    "phone": null,
-//    "email": "testQA303@gmail.com",
-//    "role": "USER",
-//    "gender": null,
-//    "birthDate": null,
-//    "avatarUrl": null,
-//    "backgroundUrl": null
-//}
     }
     @Test
     public void getAdminData() {
@@ -39,16 +27,7 @@ public class GetUser extends BaseTest {
         UserDataResponse userInfo = responseGetRequest.as(UserDataResponse.class);
         System.out.println("response" + responsePostRequest);
         System.out.println("responseGetRequest" + responseGetRequest);
-//        "id": "1cc46035-ca6c-46fd-9f17-d99dbe7978a0",
-//                "name": null,
-//                "surname": null,
-//                "phone": null,
-//                "email": "AdminTestQA303@gmail.com",
-//                "role": "ADMIN",
-//                "gender": null,
-//                "birthDate": null,
-//                "avatarUrl": null,
-//                "backgroundUrl": null
+
 
     }
 }

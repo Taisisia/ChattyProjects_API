@@ -19,10 +19,9 @@ public class GetAllPostsTest extends BaseTest {
         Response allPostsResponse = getRequest("/api/posts?skip=0&limit=" + postsNumber, 200, token);
         List<PostResponse> getUsersPostResponse = allPostsResponse.jsonPath().getList("posts", PostResponse.class);
 
-        //Check that list is not empty
+
         assertFalse(getUsersPostResponse.isEmpty(), "The post list is empty!");
 
-        // Check that the number of posts <= postsNumber
         assertTrue(getUsersPostResponse.size() <= postsNumber);
     }
 }

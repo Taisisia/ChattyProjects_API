@@ -103,7 +103,6 @@ public class CreatePostTest extends BaseTest {
                 false);
         Response createPostResponse = postRequestWithToken("/api/posts", 400, postRequest, token);
 
-        Assertions.assertEquals(400, createPostResponse.getStatusCode());
         String responseBody = createPostResponse.getBody().asString();
 
         Assertions.assertTrue(responseBody.contains("Body can not be empty!"));
