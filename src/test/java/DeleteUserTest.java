@@ -2,6 +2,10 @@ import com.github.javafaker.Faker;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class DeleteUserTest extends BaseTest {
     Faker faker = new Faker();
     @Test
@@ -26,9 +30,19 @@ public class DeleteUserTest extends BaseTest {
         LoginUserResponse responseAdmin = response1.as(LoginUserResponse.class);
 
         String tokenAdmin = responseAdmin.getAccessToken();
-        System.out.println("Admin Token: " + tokenAdmin);
-
         deleteRequestAsAdmin("/api/users/" + userId, 204, tokenAdmin);
 
+    }
+    @Test
+    public void deleteNonExistentUser() {
+        LoginUserRequest loginAdminRequest = new LoginUserRequest("AdminTestQA303@gmail.com", "Test123456");
+        Response response = postRequest("/api/auth/login", 200, loginAdminRequest);
+        LoginUserResponse responseAdmin = response.as(LoginUserResponse.class);
+        String tokenAdmin = responseAdmin.getAccessToken();
+
+        String nonExistentUserId = UUID.randomUUID().toString();
+        Response deleteResponse = deleteRequestAsAdmin("/api/users/" + nonExistentUserId, 204, tokenAdmin);
+
+        assertEquals(204, deleteResponse.statusCode());
     }
 }

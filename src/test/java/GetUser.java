@@ -1,7 +1,14 @@
+import com.github.javafaker.Faker;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class GetUser extends BaseTest {
+    Faker faker = new Faker();
+
     @Test
     public void getUserData() {
         LoginUserRequest requestBody = new LoginUserRequest("testQA303@gmail.com", "Test123456");
@@ -15,6 +22,7 @@ public class GetUser extends BaseTest {
         System.out.println("response" + response);
         System.out.println("responseSecond" + responseSecond);
     }
+
     @Test
     public void getAdminData() {
         LoginUserRequest requestBody = new LoginUserRequest("AdminTestQA303@gmail.com", "Test123456");
@@ -27,7 +35,6 @@ public class GetUser extends BaseTest {
         UserDataResponse userInfo = responseGetRequest.as(UserDataResponse.class);
         System.out.println("response" + responsePostRequest);
         System.out.println("responseGetRequest" + responseGetRequest);
-
-
     }
 }
+
