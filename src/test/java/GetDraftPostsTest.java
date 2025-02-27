@@ -13,7 +13,7 @@ public class GetDraftPostsTest extends BaseTest {
         LoginUserResponse loginUserResponse = responseLogin.as(LoginUserResponse.class);
         String token = loginUserResponse.getAccessToken();
         Response getDraftResponse = getRequest("/api/posts/drafts", 200, token);
-        assertEquals(200, getDraftResponse.getStatusCode()); // Проверка успешного получения черновиков
+        assertEquals(200, getDraftResponse.getStatusCode());
         List<PostResponse> draftPosts = getDraftResponse.jsonPath().getList("drafts", PostResponse.class);
         assertNotNull(draftPosts);
         assertTrue(draftPosts.isEmpty());

@@ -1,6 +1,9 @@
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 public class GetPostByUserTest extends BaseTest{
     @Test
     public void getPostByUser(){
@@ -11,8 +14,8 @@ public class GetPostByUserTest extends BaseTest{
 
         Response response = getRequest("/api/me", 200, token);
         UserDataResponse userInfo = response.as(UserDataResponse.class);
-        String userId = userInfo.getId();
-
+        String userId = userInfo.getId();//7586bfba-3383-4348-830f-c4629acac7fa
+        System.out.println("UserID " + userId);
         Response getUsersPost = getRequest("/api/users/" + userId + "/posts?skip=0&limit=10", 200, token);
     }
 }
